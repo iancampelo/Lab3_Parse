@@ -26,7 +26,8 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [x] Improved UI
-* [x] Improved UI
+* [x] Email validation
+* [x] Forget password
 
 ## Video Walkthrough
 

@@ -54,24 +54,39 @@
                                     <action selector="signupClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iWL-z3-cru"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQh-gh-EkP">
+                                <state key="normal" title="Forget password?"/>
+                                <connections>
+                                    <action selector="forgetPassClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUA-BA-Rrd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Dis-PE-Xzw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XQh-gh-EkP" secondAttribute="bottom" constant="20" id="0ip-M4-qtK"/>
                             <constraint firstItem="CX7-H8-GH3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="679-PB-vWE"/>
+                            <constraint firstItem="Dis-PE-Xzw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6Bz-PT-hP1"/>
                             <constraint firstItem="mEj-4H-a4b" firstAttribute="top" secondItem="CX7-H8-GH3" secondAttribute="bottom" constant="20" id="725-cj-bJ2"/>
+                            <constraint firstItem="XQh-gh-EkP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="9cY-mI-Xed"/>
                             <constraint firstItem="j29-2P-VqG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="It0-dW-D6s"/>
+                            <constraint firstItem="XQh-gh-EkP" firstAttribute="top" secondItem="j29-2P-VqG" secondAttribute="bottom" constant="15" id="Kkf-RG-7pK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Dis-PE-Xzw" secondAttribute="bottom" constant="10" id="MI3-Xh-ISd"/>
-                            <constraint firstItem="Dis-PE-Xzw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="j29-2P-VqG" secondAttribute="bottom" constant="20" id="WTe-8a-taF"/>
-                            <constraint firstItem="CX7-H8-GH3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Stt-sT-Kq3" secondAttribute="bottom" constant="20" id="WfB-gX-3YT"/>
+                            <constraint firstItem="XQh-gh-EkP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Poj-Dp-ViU"/>
+                            <constraint firstItem="j29-2P-VqG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UTE-Je-XkT"/>
+                            <constraint firstItem="CX7-H8-GH3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Stt-sT-Kq3" secondAttribute="bottom" constant="10" id="WfB-gX-3YT"/>
                             <constraint firstItem="Stt-sT-Kq3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wvt-Vm-5Sy"/>
                             <constraint firstItem="Dis-PE-Xzw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="YQc-JQ-7Va"/>
                             <constraint firstAttribute="trailing" secondItem="mEj-4H-a4b" secondAttribute="trailing" constant="50" id="a8F-eL-tnJ"/>
                             <constraint firstItem="mEj-4H-a4b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="dOX-bV-1bG"/>
                             <constraint firstItem="CX7-H8-GH3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fd1-EM-RE6"/>
+                            <constraint firstItem="XQh-gh-EkP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fsy-WH-vS8"/>
                             <constraint firstItem="j29-2P-VqG" firstAttribute="top" secondItem="mEj-4H-a4b" secondAttribute="bottom" constant="20" id="lu8-t7-Kin"/>
                             <constraint firstItem="Stt-sT-Kq3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="s6u-kp-vps"/>
+                            <constraint firstItem="mEj-4H-a4b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tMP-M5-kth"/>
+                            <constraint firstAttribute="trailing" secondItem="XQh-gh-EkP" secondAttribute="trailing" constant="50" id="uzB-9w-9bY"/>
                             <constraint firstAttribute="trailing" secondItem="CX7-H8-GH3" secondAttribute="trailing" constant="50" id="vrJ-TL-jIU"/>
                             <constraint firstAttribute="trailing" secondItem="j29-2P-VqG" secondAttribute="trailing" constant="50" id="xA0-jz-Y4i"/>
+                            <constraint firstItem="CX7-H8-GH3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xNP-wh-EcV"/>
                             <constraint firstItem="CX7-H8-GH3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xle-Ja-JSh"/>
                             <constraint firstAttribute="trailing" secondItem="Dis-PE-Xzw" secondAttribute="trailing" constant="50" id="z3o-69-V7e"/>
                         </constraints>

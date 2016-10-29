@@ -12,7 +12,7 @@ import Parse
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordText.delegate = self
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,16 +63,46 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    @IBAction func forgetPassClick(_ sender: UIButton) {
+        if(emailText.text == nil){
+            showModal(isErrorMsg: true, msg: "Email field are required")
+        }
+        else{
+            
+            PFUser.requestPasswordResetForEmail(inBackground: emailText.text!){
+                (sucess, error) in
+                if let error = error{
+                    let errorString = error as NSError
+                    self.showModal(isErrorMsg: true, msg: errorString.userInfo["error"] as! String)
+                }else{
+                    self.showModal(isErrorMsg: false, msg: "Email sent to \(self.emailText.text!)!")
+                }
+            }
+        }
+    }
     
     @IBAction func loginClick(_ sender: AnyObject) {
-        
+        if(validateTexts()){
+            PFUser.logInWithUsername(inBackground: emailText.text!, password: passwordText.text!){
+                (sucess, error) in
+                if let error = error{
+                    let errorString = error as NSError
+                    self.showModal(isErrorMsg: true, msg: errorString.userInfo["error"] as! String)
+                }else{
+                    self.showModal(isErrorMsg: false, msg: "Logged in!")
+                }
+            }
+        }else{
+            showModal(isErrorMsg: true, msg: "All fields are required")
+        }
     }
     
     @IBAction func signupClick(_ sender: AnyObject) {
         if(validateTexts()){
-            var user = PFUser()
+            let user = PFUser()
             
             user.email = emailText.text
+            user.username = emailText.text
             user.password = passwordText.text
             
             //        // other fields can be set just like with PFObject
@@ -80,13 +110,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //
             
             user.signUpInBackground() {
-                (succeeded: Bool, error: NSError?) -> Void in
-                if let error = error {
-                    let errorString = error.userInfo["error"] as? NSString
+                (succeeded, error) in
+                
+                if let error = error{
+                    let errorString = error as NSError
                     // Show the errorString somewhere and let the user try again.
-                    showModal(isErrorMsg: true, msg: errorString)
+                    self.showModal(isErrorMsg: true, msg: errorString.userInfo["error"] as! String)
                 } else {
-                    showModal(isErrorMsg: false, msg: "User created.\nNow you can login!")
+                    self.showModal(isErrorMsg: false, msg: "User created.\nNow you can login!")
                 }
             }
         }
@@ -105,13 +136,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
