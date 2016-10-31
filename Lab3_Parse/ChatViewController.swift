@@ -10,7 +10,8 @@ import UIKit
 import Parse
 
 class ChatViewController: UIViewController {
-
+    weak var delegate: ChatViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
