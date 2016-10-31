@@ -9,9 +9,18 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, ChatViewControllerDelegate {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +64,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func validateTexts() -> Bool{
         
-        if(emailText.text == nil){
+        if(emailText.text == ""){
             return false
         }
-        if(passwordText.text == nil){
+        if(passwordText.text == ""){
             return false
         }
         return true
@@ -78,22 +87,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.showModal(isErrorMsg: false, msg: "Email sent to \(self.emailText.text!)!")
                 }
             }
-        }
-    }
-    
-    @IBAction func loginClick(_ sender: AnyObject) {
-        if(validateTexts()){
-            PFUser.logInWithUsername(inBackground: emailText.text!, password: passwordText.text!){
-                (sucess, error) in
-                if let error = error{
-                    let errorString = error as NSError
-                    self.showModal(isErrorMsg: true, msg: errorString.userInfo["error"] as! String)
-                }else{
-                    self.showModal(isErrorMsg: false, msg: "Logged in!")
-                }
-            }
-        }else{
-            showModal(isErrorMsg: true, msg: "All fields are required")
         }
     }
     
@@ -126,7 +119,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
@@ -136,10 +128,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationVC = segue.destination as! UINavigationController
-        let chatVC = navigationVC.topViewController as! ChatViewController
-        
-        chatVC.delegate = self
+        if(validateTexts()){
+            PFUser.logInWithUsername(inBackground: emailText.text!, password: passwordText.text!){
+                (sucess, error) in
+                if let error = error{
+                    let errorString = error as NSError
+                    self.showModal(isErrorMsg: true, msg: errorString.userInfo["error"] as! String)
+                }else{
+                    //self.showModal(isErrorMsg: false, msg: "Logged in!")
+                    self.emailText.text = ""
+                    self.passwordText.text = ""
+                    
+                    let navigation = segue.destination as! UINavigationController
+                    let chatVC = navigation.topViewController as! ChatViewController
+                    chatVC.delegate = self
+                }
+            }
+        }else{
+            showModal(isErrorMsg: true, msg: "All fields are required")
+        }
     }
     
 }

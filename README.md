@@ -15,9 +15,9 @@ The following **required** functionality is completed:
 * [x] Send a Chat Message
 * [x] View the Chat Room
 * [x] Associating Users with Messages
-* [x] Adding pictures to messages
-* [x] Adding pictures to user profile
-* [x] Link Facebook account
+* [] Adding pictures to messages
+* [] Adding pictures to user profile
+* [] Link Facebook account
 
 The following **optional** features are implemented:
 
@@ -28,6 +28,7 @@ The following **additional** features are implemented:
 * [x] Improved UI
 * [x] Email validation
 * [x] Forget password
+* [x] Logout
 
 ## Video Walkthrough
 
